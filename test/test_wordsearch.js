@@ -1,7 +1,7 @@
 const chai = require('chai');
 const assert = chai.assert;
 
-const wordSearch = require('../wordsearch.js')
+const wordSearch = require('../wordsearch.js');
 
 describe("#wordSearch()", function() {
   it("should return false if the word is not present", function() {
@@ -15,12 +15,12 @@ describe("#wordSearch()", function() {
       ['U', 'B', 'T', 'W', 'A', 'P', 'A', 'I'],
       ['O', 'D', 'C', 'A', 'K', 'U', 'A', 'S'],
       ['E', 'Z', 'K', 'F', 'Q', 'U', 'A', 'L'],
-    ], 'FRANK')
+    ], 'FRANK');
 
     assert.isFalse(result);
   });
 
-  it("should return true if the word is present", function() {
+  it("should return true if the word is present HORIZONTALLY", function() {
     const result = wordSearch([
       ['A', 'W', 'C', 'F', 'Q', 'U', 'A', 'L'],
       ['S', 'E', 'I', 'N', 'F', 'E', 'L', 'D'],
@@ -31,8 +31,27 @@ describe("#wordSearch()", function() {
       ['U', 'B', 'T', 'W', 'A', 'P', 'A', 'I'],
       ['O', 'D', 'C', 'A', 'K', 'U', 'A', 'S'],
       ['E', 'Z', 'K', 'F', 'Q', 'U', 'A', 'L'],
-    ], 'SEINFELD')
+    ], 'SEINFELD');
 
     assert.isTrue(result);
+  });
+
+  it("should return true if the word is present VERTICALLY", function() {
+    const result = wordSearch([
+      ['A', 'W', 'C', 'F', 'Q', 'U', 'A', 'L'],
+      ['A', 'E', 'I', 'N', 'F', 'E', 'L', 'D'],
+      ['R', 'F', 'C', 'F', 'Q', 'U', 'A', 'L'],
+      ['D', 'M', 'J', 'T', 'E', 'V', 'R', 'G'],
+      ['V', 'H', 'C', 'S', 'Y', 'E', 'R', 'L'],
+      ['A', 'F', 'R', 'E', 'N', 'E', 'Y', 'B'],
+      ['R', 'B', 'T', 'W', 'A', 'P', 'A', 'I'],
+      ['K', 'D', 'C', 'A', 'K', 'U', 'A', 'S'],
+      ['S', 'Z', 'K', 'F', 'Q', 'U', 'A', 'L'],
+    ], 'AARDVARKS');
+    assert.isTrue(result);
+  });
+  it("should return UNDEFINED if the word matrix is empty", function() {
+    const result = wordSearch([['']], 'WORD');
+    assert.isUndefined;
   });
 });
